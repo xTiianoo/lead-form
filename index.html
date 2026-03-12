@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Get in Touch — MVP Team Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --navy:       #0c0e1c;
+  --navy2:      #10132a;
+  --navy3:      #161930;
+  --navy4:      #1d2140;
+  --gold:       #c9a84c;
+  --gold2:      #e0c06a;
+  --gold3:      #a8883a;
+  --gold-dim:   rgba(201,168,76,.12);
+  --gold-glow:  rgba(201,168,76,.22);
+  --white:      #ffffff;
+  --offwhite:   #f0eee8;
+  --muted:      #6b7194;
+  --muted2:     #9b9fc0;
+  --border:     rgba(255,255,255,.07);
+  --border2:    rgba(201,168,76,.25);
+  --surface:    rgba(255,255,255,.04);
+  --heading:    'Montserrat', sans-serif;
+  --body:       'Open Sans', sans-serif;
+  --t:          .22s cubic-bezier(.4,0,.2,1);
+}
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--body);
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 20px;
+  position: relative; overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 80% -10%, rgba(201,168,76,.08) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 60% at -10% 100%, rgba(201,168,76,.05) 0%, transparent 55%);
+  pointer-events: none; z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+}
+
+/* CARD */
+.page {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 980px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--navy2);
+  border: 1px solid rgba(201,168,76,.15);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(201,168,76,.08);
+  animation: riseIn .55s cubic-bezier(.4,0,.2,1) both;
+}
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* LEFT */
+.left {
+  background: linear-gradient(160deg, #13163a 0%, #0b0d1f 100%);
+  padding: 54px 44px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-right: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.left::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2), transparent);
+}
+.left::after {
+  content: '';
+  position: absolute; bottom: -90px; right: -70px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.brand-tag {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--heading);
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+.brand-tag::before { content: ''; width: 26px; height: 2px; background: var(--gold); }
+
+.left h1 {
+  font-family: var(--heading);
+  font-size: clamp(20px, 2.5vw, 34px);
+  font-weight: 800; line-height: 1.1;
+  text-transform: uppercase; letter-spacing: -.3px;
+  color: var(--white); margin-bottom: 4px;
+}
+.left h1 .sub-line {
+  display: block; font-style: italic; font-weight: 400;
+  text-transform: none; letter-spacing: 0;
+  color: var(--gold); font-size: .82em;
+  margin-top: 5px;
+}
+.left-desc {
+  font-size: 13px; color: var(--muted2);
+  line-height: 1.75; margin-top: 14px; margin-bottom: 34px;
+  max-width: 272px;
+}
+
+.perks { display: flex; flex-direction: column; gap: 15px; margin-bottom: 38px; }
+.perk { display: flex; align-items: flex-start; gap: 13px; animation: riseIn .5s both; }
+.perk:nth-child(1) { animation-delay: .1s; }
+.perk:nth-child(2) { animation-delay: .18s; }
+.perk:nth-child(3) { animation-delay: .26s; }
+.perk-icon {
+  width: 36px; height: 36px; border-radius: 4px;
+  background: var(--gold-dim); border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.perk-text strong {
+  display: block; font-family: var(--heading);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--offwhite); margin-bottom: 3px;
+}
+.perk-text span { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+.left-footer {
+  font-family: var(--heading); font-size: 9px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  display: flex; align-items: center; gap: 7px;
+}
+.left-footer::before { content: '🔒'; font-size: 11px; }
+
+/* RIGHT */
+.right {
+  padding: 48px 44px;
+  display: flex; flex-direction: column;
+}
+
+.form-header { margin-bottom: 24px; }
+.form-eyebrow {
+  font-family: var(--heading); font-size: 9px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 7px;
+  display: flex; align-items: center; gap: 8px;
+}
+.form-eyebrow::before { content: ''; width: 16px; height: 2px; background: var(--gold); }
+.form-header h2 {
+  font-family: var(--heading); font-size: 19px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .5px; color: var(--white);
+}
+
+/* FIELDS */
+form { display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+.field label {
+  font-family: var(--heading); font-size: 9px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted2);
+  display: flex; align-items: center; gap: 4px;
+}
+.field label .req { color: var(--gold); font-size: 13px; line-height: 1; }
+
+.field input, .field select {
+  width: 100%; padding: 11px 13px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--white); font-size: 14px; font-family: var(--body);
+  transition: border-color var(--t), box-shadow var(--t), background var(--t);
+  outline: none; -webkit-appearance: none;
+}
+.field input::placeholder { color: var(--muted); }
+.field input:focus, .field select:focus {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+.field input.error { border-color: #e05252; box-shadow: 0 0 0 3px rgba(224,82,82,.1); }
+.field input.valid { border-color: rgba(201,168,76,.45); }
+
+.field select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7194' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 13px center;
+  padding-right: 36px; cursor: pointer; color: var(--muted);
+}
+.field select.selected { color: var(--white); }
+.field select option { background: #161930; color: var(--white); }
+
+/* SOURCE BUTTONS */
+.source-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.source-btn {
+  padding: 11px 7px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+  color: var(--muted2);
+  font-family: var(--heading); font-size: 10px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; text-align: center;
+  transition: all var(--t);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.source-btn .sb-icon { font-size: 17px; }
+.source-btn:hover { border-color: var(--border2); color: var(--offwhite); background: var(--gold-dim); }
+.source-btn.active {
+  border-color: var(--gold); background: var(--gold-dim); color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold-glow), inset 0 0 0 1px var(--gold);
+}
+
+.field-error { font-family: var(--heading); font-size: 9.5px; letter-spacing: .3px; color: #e05252; display: none; }
+.field-error.show { display: block; }
+
+.gold-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border2), transparent); margin: 2px 0; }
+
+/* SUBMIT */
+.submit-wrap { margin-top: 6px; }
+.submit-btn {
+  width: 100%; padding: 14px 24px;
+  background: linear-gradient(135deg, var(--gold), var(--gold3));
+  border: none; border-radius: 4px;
+  color: var(--navy);
+  font-family: var(--heading); font-size: 12px; font-weight: 800;
+  letter-spacing: 3px; text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--t);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  box-shadow: 0 4px 20px rgba(201,168,76,.25);
+}
+.submit-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.2), transparent);
+  opacity: 0; transition: opacity var(--t);
+}
+.submit-btn:hover::before { opacity: 1; }
+.submit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 32px rgba(201,168,76,.4); }
+.submit-btn:active { transform: translateY(0); }
+.submit-btn:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+.submit-btn .arrow { font-size: 16px; transition: transform var(--t); }
+.submit-btn:hover .arrow { transform: translateX(4px); }
+
+.submit-note {
+  text-align: center; font-family: var(--heading);
+  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); margin-top: 10px;
+}
+
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(12,14,28,.3); border-top-color: var(--navy);
+  border-radius: 50%; animation: spin .7s linear infinite; display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* SUCCESS */
+.success-screen {
+  display: none; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; flex: 1; padding: 20px 0;
+  animation: riseIn .45s cubic-bezier(.4,0,.2,1) both;
+}
+.success-screen.show { display: flex; }
+.success-icon {
+  width: 68px; height: 68px;
+  background: linear-gradient(135deg, var(--gold), var(--gold3));
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 27px; color: var(--navy); margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(201,168,76,.3);
+  animation: scaleIn .4s cubic-bezier(.17,.67,.44,1.29) .1s both;
+}
+@keyframes scaleIn { from { transform: scale(0); } to { transform: scale(1); } }
+.success-screen h3 {
+  font-family: var(--heading); font-size: 20px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 2px;
+  color: var(--white); margin-bottom: 10px;
+}
+.success-screen p { font-size: 13.5px; color: var(--muted2); line-height: 1.7; max-width: 290px; }
+.success-steps {
+  margin-top: 22px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: 15px 19px; text-align: left;
+  width: 100%; max-width: 300px;
+}
+.ss-label {
+  font-family: var(--heading); font-size: 8px;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 11px;
+}
+.ss-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12.5px; color: var(--muted2); padding: 5px 0;
+}
+.ss-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 1px; flex-shrink: 0; }
+
+@media (max-width: 680px) {
+  .page { grid-template-columns: 1fr; }
+  .left { padding: 36px 28px; border-right: none; border-bottom: 1px solid var(--border); }
+  .perks { display: none; }
+  .right { padding: 36px 28px; }
+  .field-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- LEFT -->
+  <div class="left">
+    <div>
+      <div class="brand-tag">MVP Team Pro</div>
+      <h1>Build the Business
+        <span class="sub-line">you actually want.</span>
+      </h1>
+      <p class="left-desc">
+        Tell us about yourself and we'll match you with the right people, systems, and strategy to stop playing catch-up — and start growing on purpose.
+      </p>
+      <div class="perks">
+        <div class="perk">
+          <div class="perk-icon">⚡</div>
+          <div class="perk-text">
+            <strong>Response Within 24 Hours</strong>
+            <span>Every submission reviewed personally — no automated brush-offs.</span>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🎯</div>
+          <div class="perk-text">
+            <strong>Tailored to Your Business</strong>
+            <span>We match you with the right systems for where you are right now.</span>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🤝</div>
+          <div class="perk-text">
+            <strong>People · Process · Technology</strong>
+            <span>The formula we've been refining since 1997.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="left-footer">Your data is never sold or shared.</div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="form-header">
+      <div class="form-eyebrow">Get Started</div>
+      <h2>Tell Us About Yourself</h2>
+    </div>
+
+    <form id="leadForm" novalidate>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="firstName">First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" name="firstName" placeholder="Maria" autocomplete="given-name"/>
+          <span class="field-error" id="err-firstName">Required.</span>
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" name="lastName" placeholder="Santos" autocomplete="family-name"/>
+          <span class="field-error" id="err-lastName">Required.</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="maria@company.com" autocomplete="email"/>
+        <span class="field-error" id="err-email">Enter a valid email address.</span>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone Number <span class="req">*</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/>
+        <span class="field-error" id="err-phone">Required.</span>
+      </div>
+
+      <div class="field">
+        <label for="company">Company / Business <span class="req">*</span></label>
+        <input type="text" id="company" name="company" placeholder="Santos Solutions Inc." autocomplete="organization"/>
+        <span class="field-error" id="err-company">Required.</span>
+      </div>
+
+      <div class="gold-divider"></div>
+
+      <div class="field">
+        <label>How Did You Find Us? <span class="req">*</span></label>
+        <div class="source-grid">
+          <button type="button" class="source-btn" data-value="LinkedIn">
+            <span class="sb-icon">💼</span>LinkedIn
+          </button>
+          <button type="button" class="source-btn" data-value="Website">
+            <span class="sb-icon">🌐</span>Website
+          </button>
+          <button type="button" class="source-btn" data-value="Referral">
+            <span class="sb-icon">🤝</span>Referral
+          </button>
+        </div>
+        <input type="hidden" id="source" name="source"/>
+        <span class="field-error" id="err-source">Please select one.</span>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span id="btnText">Let's Talk</span>
+          <span class="arrow" id="btnArrow">→</span>
+          <div class="spinner" id="btnSpinner"></div>
+        </button>
+        <p class="submit-note">No spam · Ever · Unsubscribe anytime</p>
+      </div>
+
+    </form>
+
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✓</div>
+      <h3>You're In.</h3>
+      <p>We've received your message. Someone from the MVP Team will be in touch within 24 hours.</p>
+      <div class="success-steps">
+        <div class="ss-label">What Happens Next</div>
+        <div class="ss-item"><div class="ss-dot"></div>Details saved to our CRM</div>
+        <div class="ss-item"><div class="ss-dot"></div>Welcome email on its way</div>
+        <div class="ss-item"><div class="ss-dot"></div>Team follow-up task created</div>
+        <div class="ss-item"><div class="ss-dot"></div>Expect contact within 24h</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const N8N_WEBHOOK_URL = https://n8n.chrisautomation.com/webhook/lead-form;
+
+document.querySelectorAll('.source-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.source-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('source').value = btn.dataset.value;
+    clearErr('source');
+  });
+});
+
+const fields = ['firstName','lastName','email','phone','company'];
+fields.forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('blur', () => validateField(id));
+  el.addEventListener('input', () => { if (el.classList.contains('error')) validateField(id); });
+});
+
+function validateField(id) {
+  const el = document.getElementById(id);
+  const val = el.value.trim();
+  const valid = id === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) : val.length > 0;
+  el.classList.toggle('error', !valid);
+  el.classList.toggle('valid', valid);
+  valid ? clearErr(id) : showErr(id);
+  return valid;
+}
+function showErr(id) { const e = document.getElementById('err-'+id); if(e) e.classList.add('show'); }
+function clearErr(id) { const e = document.getElementById('err-'+id); if(e) e.classList.remove('show'); }
+
+document.getElementById('leadForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  let ok = true;
+  fields.forEach(id => { if (!validateField(id)) ok = false; });
+  if (!document.getElementById('source').value) { showErr('source'); ok = false; }
+  if (!ok) return;
+
+  const btn = document.getElementById('submitBtn');
+  document.getElementById('btnText').textContent = 'Sending…';
+  document.getElementById('btnArrow').style.display = 'none';
+  document.getElementById('btnSpinner').style.display = 'block';
+  btn.disabled = true;
+
+  const payload = {
+    firstName:   document.getElementById('firstName').value.trim(),
+    lastName:    document.getElementById('lastName').value.trim(),
+    name:        `${document.getElementById('firstName').value.trim()} ${document.getElementById('lastName').value.trim()}`,
+    email:       document.getElementById('email').value.trim().toLowerCase(),
+    phone:       document.getElementById('phone').value.trim(),
+    company:     document.getElementById('company').value.trim(),
+    source:      document.getElementById('source').value,
+    submittedAt: new Date().toISOString(),
+  };
+
+  try {
+    await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch(err) { console.warn('Webhook:', err); }
+
+  document.getElementById('leadForm').style.display = 'none';
+  document.getElementById('successScreen').classList.add('show');
+});
+</script>
+</body>
+</html>
